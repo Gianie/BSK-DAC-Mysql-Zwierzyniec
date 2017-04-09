@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using MySql.Data.MySqlClient;
+using System.Data;
+
 namespace BSK
 {
     /// <summary>
@@ -38,6 +40,20 @@ namespace BSK
     {
         public Dane()
         {
+
+            /////////////////
+
+            MySqlConnection connection;
+            String connString = "server=localhost;uid=root;pwd=piesnicpon;database=zwierzyniec;";
+            connection = new MySqlConnection(connString);
+            connection.Open();
+
+            MySqlDataAdapter adapter;
+            adapter = new MySqlDataAdapter("SELECT * FROM zwierzę", connection);
+           
+
+            ////////////////////
+
             InitializeComponent();
 
             //TUTAJ TRZEBA WSADZIC DODAWANIE WSZYSTKICH TABEL Z BAZY DANYCH
@@ -47,23 +63,28 @@ namespace BSK
             // TUTAJ WSADŹ ZAPYTANIE DO BAZY DANYCH
             //LISTA COLUMNS TO MUSZA BYC KOLUMNY Z BAZY DANYCH I BEDZIE DZIALAC
             List<string> columns =new List<string>();
-        
-            columns.Add("Gatunek");
-            columns.Add("Id");
-            foreach (string text in columns)
-            {
-                // now set up a column and binding for each property
-                var column = new DataGridTextColumn
-                {
-                    Header = text,
-                    Binding = new Binding(text)
-                };
+ 
+           
+            //foreach (string text in columns)
+            //{
+            //    // now set up a column and binding for each property
+            //    var column = new DataGridTextColumn
+            //    {
+            //        Header = text,
+            //        Binding = new Binding(text)
+            //    };
 
-                dataGrid1.Columns.Add(column);
+            //    dataGrid1.Columns.Add(column);
                
-            }
-            dataGrid1.Items.Add(new MyItem { Id = 1, Gatunek = "piesel" });
-           // dataGrid1.Items.Add()
+            //}
+           // dataGrid1.Items.Add(new MyItem { Id = 1, Gatunek = "piesel" });
+            // dataGrid1.Items.Add(new MyItem { Id = 1, Gatunek = "piesel" });
+            // dataGrid1.Items.Add()
+
+           
+            DataTable dt = new DataTable();
+            adapter.Fill(dt);
+            dataGrid1.ItemsSource = dt.DefaultView;
         }
 
         private void button_Click(object sender, RoutedEventArgs e)
