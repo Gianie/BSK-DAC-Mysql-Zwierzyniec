@@ -8,16 +8,10 @@
         Title="Dane" Height="600" Width="600">
     <Grid>
         <Label x:Name="label" Content="Tabela" HorizontalAlignment="Left" Margin="495,44,0,0" VerticalAlignment="Top"/>
-        <ComboBox x:Name="comboBox" HorizontalAlignment="Left" Margin="486,75,0,0" VerticalAlignment="Top" Width="87" Height="28" SelectionChanged="comboBox_SelectionChanged" />
+        <ComboBox x:Name="comboBox" HorizontalAlignment="Left" Margin="486,75,0,0" VerticalAlignment="Top" Width="87" Height="28" SelectionChanged="comboBox_SelectionChanged"  DropDownClosed="comboBox_DropDownClosed"/>
         <Button x:Name="button" Content="Powrót do menu" HorizontalAlignment="Left" Margin="87,508,0,0" VerticalAlignment="Top" Width="118" Height="24" Click="button_Click"/>
-        <!--<ListView  x:Name="listView" HorizontalAlignment="Left" Margin="21,27,0,0" VerticalAlignment="Top" Width="442" Height="463">
-            <ListView.View>
-                <GridView x:Name="gridViewWeterynaria" AutoGenerateColumns="False" ItemsSource="{Binding Results}">
-                    <GridViewColumn Header="Id" DisplayMemberBinding="{Binding Id}"/>
-                    <GridViewColumn Header="Gatunek" DisplayMemberBinding="{Binding Gatunek}"/>
-                </GridView>
-            </ListView.View>
-        </ListView>-->
-        <DataGrid x:Name="dataGrid1" ItemsSource="{Binding Results}" HorizontalAlignment="Left" Margin="21,27,0,0" VerticalAlignment="Top" Width="442" Height="463"></DataGrid>
+       
+        <DataGrid x:Name="dataGrid1" ItemsSource="{Binding Results}" HorizontalAlignment="Left" Margin="21,27,0,0" VerticalAlignment="Top" Width="442" Height="463" ></DataGrid>
+        <Button x:Name="Zapisz" Content="Zapisz" HorizontalAlignment="Left" Margin="411,508,0,0" VerticalAlignment="Top" Width="118" Height="24" Click="Zapisz_Click" />
     </Grid>
 </Window>
