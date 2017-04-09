@@ -1,0 +1,103 @@
+﻿CREATE TABLE `zwierzyniec`.`Klient` (
+    `pesel` BIGINT NOT NULL,
+    `imie` VARCHAR(45),
+    `nazwisko` VARCHAR(45),
+    `adres` VARCHAR(45),
+    `telefon_kontaktowy` VARCHAR(9),
+    PRIMARY KEY (`pesel`)
+);
+
+CREATE TABLE `Zwierze` (
+    `id_zwierzecia` INT(11) NOT NULL,
+    `imie` VARCHAR(45),
+    `gatunek` VARCHAR(45),
+    `rasa` VARCHAR(45),
+    `data urodzenia` DATE,
+    `ubarwienie` VARCHAR(45),
+    `szczepienia` VARCHAR(45),
+    `fk_klienta` BIGINT(11) NOT NULL,
+    PRIMARY KEY (`id_zwierzecia`),
+    FOREIGN KEY (`fk_klienta`)
+        REFERENCES Klient (pesel)
+);
+
+
+CREATE TABLE `zwierzyniec`.`Usluga` (
+    `id_uslugi` INT NOT NULL,
+    `nazwa` VARCHAR(45),
+    `koszta` INT,
+    `dlugosc` INT,
+    PRIMARY KEY (`id_uslugi`)
+);
+
+CREATE TABLE `zwierzyniec`.`Lecznica` (
+    `id_lecznicy` INT NOT NULL,
+    `nazwa` VARCHAR(45),
+    `adres` VARCHAR(45),
+    `ilosc_pokoi_zabiegowych` INT,
+    PRIMARY KEY (`id_lecznicy`)
+);
+  
+CREATE TABLE `zwierzyniec`.`Pracownik` (
+    `pesel` BIGINT NOT NULL,
+    `imie` VARCHAR(45),
+    `nazwisko` VARCHAR(45),
+    `wynagrodzenie` INT,
+    `stanowisko` VARCHAR(45),
+    `adres_zamieszkania` VARCHAR(45),
+    `telefon_kontaktowy` INT,
+    `fk_lecznicy` INT(11) NOT NULL,
+    PRIMARY KEY (`pesel`),
+    FOREIGN KEY (`fk_lecznicy`)
+        REFERENCES Lecznica (id_lecznicy)
+);
+
+
+
+CREATE TABLE `zwierzyniec`.`Weterynarz` (
+    `pesel` BIGINT NOT NULL,
+    `tytuł` VARCHAR(45),
+    `specjalizacja` VARCHAR(45),
+    PRIMARY KEY (`pesel`),
+    FOREIGN KEY (`pesel`)
+        REFERENCES Pracownik (`pesel`)
+);
+
+
+
+  
+CREATE TABLE `zwierzyniec`.`Wizyta` (
+    `id_wizyty` INT NOT NULL,
+    `koszt` INT,
+    `data` DATE,
+    `godzina` TIME(0),
+    `fk_zwierzecia` INT(11) NOT NULL,
+    `fk_lecznicy` INT(11) NOT NULL,
+    `fk_pesel` BIGINT NOT NULL,
+    PRIMARY KEY (`id_wizyty`),
+    FOREIGN KEY (`fk_zwierzecia`)
+    REFERENCES Zwierze (`id_zwierzecia`),
+   FOREIGN KEY (`fk_lecznicy`)
+        REFERENCES Lecznica (`id_lecznicy`),
+    FOREIGN KEY (`fk_pesel`)
+      REFERENCES Weterynarz (`pesel`)
+);
+
+CREATE TABLE `zwierzyniec`.`Sklad_Wizyty` (
+    `fk_wizyty` INT(11) NOT NULL,
+    `fk_uslugi` INT(11) NOT NULL,
+    PRIMARY KEY (fk_wizyty , fk_uslugi),
+    FOREIGN KEY (`fk_wizyty`)
+        REFERENCES Wizyta (`id_wizyty`),
+    FOREIGN KEY (`fk_uslugi`)
+        REFERENCES Usluga (`id_uslugi`)
+);
+  
+  DROP TABLE Sklad_wizyty;
+   DROP TABLE Wizyta;
+  DROP TABLE Weterynarz;
+    DROP TABLE Pracownik;
+  DROP TABLE Lecznica;
+  DROP TABLE Usluga;
+  DROP TABLE Zwierze;
+DROP TABLE Klient;
