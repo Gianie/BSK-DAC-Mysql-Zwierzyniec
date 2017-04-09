@@ -12,7 +12,7 @@ CREATE TABLE `Zwierze` (
     `imie` VARCHAR(45),
     `gatunek` VARCHAR(45),
     `rasa` VARCHAR(45),
-    `data urodzenia` DATE,
+    `data_urodzenia` DATE,
     `ubarwienie` VARCHAR(45),
     `szczepienia` VARCHAR(45),
     `fk_klienta` BIGINT(11) NOT NULL,
