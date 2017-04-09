@@ -1,0 +1,7 @@
+INSERT INTO `zwierzyniec`.`klient` (`pesel`, `imie`, `nazwisko`, `adres`, `telefon_kontaktowy`) VALUES ('95101006752', 'Jan', 'Basa³aj', 'kolo', '123321123');
+INSERT INTO `zwierzyniec`.`klient` (`pesel`, `imie`, `nazwisko`, `adres`, `telefon_kontaktowy`) VALUES ('90101006752', 'Ewa', 'Bara', 'opo', '432234432');
+
+INSERT INTO `zwierzyniec`.`zwierze` (`id_zwierzecia`, `imie`, `gatunek`, `rasa`, `data urodzenia`, `ubarwienie`, `szczepienia`, `fk_klienta`) VALUES ('20', 'sid', 'chujec', 'nagi', '1990-1-1', 'szare', 'brak', '95101006752');
+
+INSERT INTO `zwierzyniec`.`lecznica` (`id_lecznicy`, `nazwa`, `adres`, `ilosc_pokoi_zabiegowych`) VALUES ('21', 'petmed', 'obroncow', '5');
+INSERT INTO `zwierzyniec`.`lecznica` (`id_lecznicy`, `nazwa`, `adres`, `ilosc_pokoi_zabiegowych`) VALUES ('22', 'aniheal', 'olsztynska', '2');
