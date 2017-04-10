@@ -33,18 +33,18 @@ CREATE TABLE `Zwierze` (
 
 
 CREATE TABLE `zwierzyniec`.`Usluga` (
-    `id_uslugi` INT NOT NULL auto_increment,
+    `id_uslugi` INT(11) NOT NULL auto_increment,
     `nazwa` VARCHAR(45),
-    `koszta` INT,
-    `dlugosc` INT,
+    `koszta` INT(11),
+    `dlugosc` INT(11),
     PRIMARY KEY (`id_uslugi`)
 );
 
 CREATE TABLE `zwierzyniec`.`Lecznica` (
-    `id_lecznicy` INT NOT NULL auto_increment,
+    `id_lecznicy` INT(11) NOT NULL auto_increment,
     `nazwa` VARCHAR(45),
     `adres` VARCHAR(45),
-    `ilosc_pokoi_zabiegowych` INT,
+    `ilosc_pokoi_zabiegowych` INT(11),
     PRIMARY KEY (`id_lecznicy`)
 );
   
@@ -52,10 +52,10 @@ CREATE TABLE `zwierzyniec`.`Pracownik` (
     `pesel` BIGINT NOT NULL,
     `imie` VARCHAR(45),
     `nazwisko` VARCHAR(45),
-    `wynagrodzenie` INT,
+    `wynagrodzenie` INT(11),
     `stanowisko` VARCHAR(45),
     `adres_zamieszkania` VARCHAR(45),
-    `telefon_kontaktowy` INT,
+    `telefon_kontaktowy` INT(11),
     `fk_lecznicy` INT(11) NOT NULL,
     PRIMARY KEY (`pesel`),
     FOREIGN KEY (`fk_lecznicy`)
@@ -77,8 +77,8 @@ CREATE TABLE `zwierzyniec`.`Weterynarz` (
 
   
 CREATE TABLE `zwierzyniec`.`Wizyta` (
-    `id_wizyty` INT NOT NULL auto_increment,
-    `koszt` INT,
+    `id_wizyty` INT(11) NOT NULL auto_increment,
+    `koszt` INT(11),
     `data` DATE,
     `godzina` TIME(0),
     `fk_zwierzecia` INT(11) NOT NULL,
