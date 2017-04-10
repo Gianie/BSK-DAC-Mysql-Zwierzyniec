@@ -1,25 +1,25 @@
 INSERT INTO `zwierzyniec`.`klient` (`pesel`, `imie`, `nazwisko`, `adres`, `telefon_kontaktowy`) VALUES ('95101006752', 'Jan', 'Basałaj', 'kolo', '123321123');
 INSERT INTO `zwierzyniec`.`klient` (`pesel`, `imie`, `nazwisko`, `adres`, `telefon_kontaktowy`) VALUES ('90101006752', 'Ewa', 'Bara', 'opo', '432234432');
 
-INSERT INTO `zwierzyniec`.`zwierze` (`id_zwierzecia`, `imie`, `gatunek`, `rasa`, `data_urodzenia`, `ubarwienie`, `szczepienia`, `fk_klienta`) VALUES ('20', 'sid', 'chujec', 'nagi', '1990-1-1', 'szare', 'brak', '95101006752');
-INSERT INTO `zwierzyniec`.`zwierze` (`id_zwierzecia`, `imie`, `gatunek`, `rasa`, `data_urodzenia`, `ubarwienie`, `szczepienia`, `fk_klienta`) VALUES ('21', 'manfred', 'mamut', 'wielki', '1965-2-3', 'brazowe', 'odra', '90101006752');
+INSERT INTO `zwierzyniec`.`zwierze` ( `imie`, `gatunek`, `rasa`, `data_urodzenia`, `ubarwienie`, `szczepienia`, `fk_klienta`) VALUES ( 'sid', 'chujec', 'nagi', '1990-1-1', 'szare', 'brak', '95101006752');
+INSERT INTO `zwierzyniec`.`zwierze` ( `imie`, `gatunek`, `rasa`, `data_urodzenia`, `ubarwienie`, `szczepienia`, `fk_klienta`) VALUES ( 'manfred', 'mamut', 'wielki', '1965-2-3', 'brazowe', 'odra', '90101006752');
 
 
-INSERT INTO `zwierzyniec`.`lecznica` (`id_lecznicy`, `nazwa`, `adres`, `ilosc_pokoi_zabiegowych`) VALUES ('11', 'petmed', 'obroncow', '5');
-INSERT INTO `zwierzyniec`.`lecznica` (`id_lecznicy`, `nazwa`, `adres`, `ilosc_pokoi_zabiegowych`) VALUES ('12', 'aniheal', 'olsztynska', '2');
+INSERT INTO `zwierzyniec`.`lecznica` ( `nazwa`, `adres`, `ilosc_pokoi_zabiegowych`) VALUES ( 'petmed', 'obroncow', '5');
+INSERT INTO `zwierzyniec`.`lecznica` ( `nazwa`, `adres`, `ilosc_pokoi_zabiegowych`) VALUES ( 'aniheal', 'olsztynska', '2');
 
-INSERT INTO `zwierzyniec`.`pracownik` (`pesel`, `imie`, `nazwisko`, `wynagrodzenie`, `stanowisko`, `adres_zamieszkania`, `telefon_kontaktowy`, `fk_lecznicy`) VALUES ('60201004523', 'Wojciech', 'Brzydal', '2000', 'asystent', 'startowa', '123432234', '11');
-INSERT INTO `zwierzyniec`.`pracownik` (`pesel`, `imie`, `nazwisko`, `wynagrodzenie`, `stanowisko`, `adres_zamieszkania`, `telefon_kontaktowy`, `fk_lecznicy`) VALUES ('23101243567', 'Adam', 'Kura', '3000', 'weterynarz', 'pilotow', '432123543', '12');
+INSERT INTO `zwierzyniec`.`pracownik` (`pesel`, `imie`, `nazwisko`, `wynagrodzenie`, `stanowisko`, `adres_zamieszkania`, `telefon_kontaktowy`, `fk_lecznicy`) VALUES ('60201004523', 'Wojciech', 'Brzydal', '2000', 'asystent', 'startowa', '123432234', '1');
+INSERT INTO `zwierzyniec`.`pracownik` (`pesel`, `imie`, `nazwisko`, `wynagrodzenie`, `stanowisko`, `adres_zamieszkania`, `telefon_kontaktowy`, `fk_lecznicy`) VALUES ('23101243567', 'Adam', 'Kura', '3000', 'weterynarz', 'pilotow', '432123543', '2');
 
 INSERT INTO `zwierzyniec`.`weterynarz` (`pesel`, `tytuł`, `specjalizacja`) VALUES ('23101243567', 'starszy weterynarz', 'konie');
 
-INSERT INTO `zwierzyniec`.`usluga` (`id_uslugi`, `nazwa`, `koszta`, `dlugosc`) VALUES ('41', 'leczenie zeba', '50', '20');
-INSERT INTO `zwierzyniec`.`usluga` (`id_uslugi`, `nazwa`, `koszta`, `dlugosc`) VALUES ('42', 'sterylizacja kota', '500', '180');
+INSERT INTO `zwierzyniec`.`usluga` ( `nazwa`, `koszta`, `dlugosc`) VALUES ( 'leczenie zeba', '50', '20');
+INSERT INTO `zwierzyniec`.`usluga` ( `nazwa`, `koszta`, `dlugosc`) VALUES ( 'sterylizacja kota', '500', '180');
 
-INSERT INTO `zwierzyniec`.`wizyta` (`id_wizyty`, `koszt`, `data`, `godzina`, `fk_zwierzecia`, `fk_lecznicy`, `fk_pesel`) VALUES ('51', '600', '2010-2-3', '8:00:00', '20', '11', '23101243567');
-INSERT INTO `zwierzyniec`.`wizyta` (`id_wizyty`, `koszt`, `data`, `godzina`, `fk_zwierzecia`, `fk_lecznicy`, `fk_pesel`) VALUES ('52', '800', '2011-5-4', '10:00:00', '21', '12', '23101243567');
+INSERT INTO `zwierzyniec`.`wizyta` ( `koszt`, `data`, `godzina`, `fk_zwierzecia`, `fk_lecznicy`, `fk_pesel`) VALUES ('600', '2010-2-3', '8:00:00', '1', '1', '23101243567');
+INSERT INTO `zwierzyniec`.`wizyta` ( `koszt`, `data`, `godzina`, `fk_zwierzecia`, `fk_lecznicy`, `fk_pesel`) VALUES ( '800', '2011-5-4', '10:00:00', '2', '2', '23101243567');
 
 
-INSERT INTO `zwierzyniec`.`sklad_wizyty` (`fk_wizyty`, `fk_uslugi`) VALUES ('51', '41');
-INSERT INTO `zwierzyniec`.`sklad_wizyty` (`fk_wizyty`, `fk_uslugi`) VALUES ('52', '42');
-INSERT INTO `zwierzyniec`.`sklad_wizyty` (`fk_wizyty`, `fk_uslugi`) VALUES ('52', '41');
+INSERT INTO `zwierzyniec`.`sklad_wizyty` (`fk_wizyty`, `fk_uslugi`) VALUES ('1', '1');
+INSERT INTO `zwierzyniec`.`sklad_wizyty` (`fk_wizyty`, `fk_uslugi`) VALUES ('2', '2');
+INSERT INTO `zwierzyniec`.`sklad_wizyty` (`fk_wizyty`, `fk_uslugi`) VALUES ('2', '1');
