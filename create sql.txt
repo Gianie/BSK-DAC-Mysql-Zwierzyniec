@@ -1,4 +1,14 @@
-﻿CREATE TABLE `zwierzyniec`.`Klient` (
+  DROP TABLE Sklad_wizyty;
+   DROP TABLE Wizyta;
+  DROP TABLE Weterynarz;
+    DROP TABLE Pracownik;
+  DROP TABLE Lecznica;
+  DROP TABLE Usluga;
+  DROP TABLE Zwierze;
+DROP TABLE Klient;
+
+
+CREATE TABLE `zwierzyniec`.`Klient` (
     `pesel` BIGINT NOT NULL,
     `imie` VARCHAR(45),
     `nazwisko` VARCHAR(45),
@@ -8,7 +18,7 @@
 );
 
 CREATE TABLE `Zwierze` (
-    `id_zwierzecia` INT(11) NOT NULL,
+    `id_zwierzecia` INT(11) NOT NULL auto_increment,
     `imie` VARCHAR(45),
     `gatunek` VARCHAR(45),
     `rasa` VARCHAR(45),
@@ -23,7 +33,7 @@ CREATE TABLE `Zwierze` (
 
 
 CREATE TABLE `zwierzyniec`.`Usluga` (
-    `id_uslugi` INT NOT NULL,
+    `id_uslugi` INT NOT NULL auto_increment,
     `nazwa` VARCHAR(45),
     `koszta` INT,
     `dlugosc` INT,
@@ -31,7 +41,7 @@ CREATE TABLE `zwierzyniec`.`Usluga` (
 );
 
 CREATE TABLE `zwierzyniec`.`Lecznica` (
-    `id_lecznicy` INT NOT NULL,
+    `id_lecznicy` INT NOT NULL auto_increment,
     `nazwa` VARCHAR(45),
     `adres` VARCHAR(45),
     `ilosc_pokoi_zabiegowych` INT,
@@ -67,7 +77,7 @@ CREATE TABLE `zwierzyniec`.`Weterynarz` (
 
   
 CREATE TABLE `zwierzyniec`.`Wizyta` (
-    `id_wizyty` INT NOT NULL,
+    `id_wizyty` INT NOT NULL auto_increment,
     `koszt` INT,
     `data` DATE,
     `godzina` TIME(0),
@@ -93,11 +103,3 @@ CREATE TABLE `zwierzyniec`.`Sklad_Wizyty` (
         REFERENCES Usluga (`id_uslugi`)
 );
   
-  DROP TABLE Sklad_wizyty;
-   DROP TABLE Wizyta;
-  DROP TABLE Weterynarz;
-    DROP TABLE Pracownik;
-  DROP TABLE Lecznica;
-  DROP TABLE Usluga;
-  DROP TABLE Zwierze;
-DROP TABLE Klient;
